@@ -1,5 +1,7 @@
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { Layout, Button } from "antd";
+import CBreadcrumb from "../atoms/CBreadcrumb";
+import styled from "styled-components";
 const { Header } = Layout;
 
 type Props = {
@@ -10,7 +12,7 @@ type Props = {
 
 const CHeader = ({ collapsed, colorBgContainer, setCollapsed }: Props) => {
   return (
-    <Header style={{ padding: 0, background: colorBgContainer }}>
+    <HeaderWrapper style={{ padding: 0, background: colorBgContainer }}>
       <Button
         type="text"
         icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
@@ -21,8 +23,16 @@ const CHeader = ({ collapsed, colorBgContainer, setCollapsed }: Props) => {
           height: 64,
         }}
       />
-    </Header>
+      <CBreadcrumb />
+    </HeaderWrapper>
   );
 };
 
 export default CHeader;
+
+const HeaderWrapper = styled(Header)`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+`;
