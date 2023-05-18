@@ -1,7 +1,7 @@
-import React from "react";
+import { Template } from "@components/index";
 
 const App = () => {
-  return <div>App</div>;
+  return <Template>sa</Template>;
 };
 
 export default App;
