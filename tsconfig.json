@@ -26,7 +26,10 @@
       "@assets/*": ["./src/assets/*"],
       "@interfaces/*": ["./src/interfaces/*"],
       "@pages/*": ["./src/pages/*"],
-      "@constants/*": ["./src/constants"]
+      "@constants/*": ["./src/constants/*"],
+      "@api/*": ["./src/api/*"],
+      "@services/*": ["./src/services/*"],
+      "@config/*": ["./src/config/*"]
     }
   },
   "include": ["src"],
