@@ -2,14 +2,10 @@ import { useState } from "react";
 import { Layout, theme } from "antd";
 import { CHeader, CSider } from "@components/index";
 import styled from "styled-components";
-
+import { Outlet } from "react-router-dom";
 const { Content, Footer } = Layout;
 
-type Props = {
-  children: string | JSX.Element;
-};
-
-const Template = ({ children }: Props) => {
+const Template = () => {
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer },
@@ -24,7 +20,9 @@ const Template = ({ children }: Props) => {
           colorBgContainer={colorBgContainer}
           setCollapsed={setCollapsed}
         />
-        <Content>{children}</Content>
+        <Content>
+          <Outlet />
+        </Content>
         <FooterWrapper>Rezztoran ©2023</FooterWrapper>
       </Layout>
     </LayoutWrapper>

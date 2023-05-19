@@ -3,22 +3,28 @@ import styled from "styled-components";
 import { ILoginFormData } from "@interfaces/auth.interface";
 import { usePostLogin } from "@api/hooks/auth";
 import { toast } from "react-toastify";
-import cookie from "js-cookie";
 import StorageService from "@services/storage";
 
-const Login = () => {
+type Props = {
+  onLogin: () => void;
+};
+
+const Login = ({ onLogin }: Props) => {
   const { mutate: login } = usePostLogin();
+  const [form] = Form.useForm();
 
   const onFinish = (values: ILoginFormData) => {
     new Promise((resolve, reject) => {
       login(values, {
         onSuccess: (data: any) => {
-          // yonlendirme yapilacak
-          StorageService.setAuthData(data.content.accessToken);
-          StorageService.setUserData(data.content.user);
-          cookie.set("token", data.content.accessToken, {
-            expires: 1 / 24,
-          });
+          if (data.content.user.role === "USER") {
+            toast.error("Böyle bir kullanıcı bulunmamaktadır!");
+            form.resetFields();
+          } else {
+            StorageService.setAuthData(data.content.accessToken);
+            StorageService.setUserData(data.content.user);
+            onLogin();
+          }
           resolve(undefined);
         },
         onError: (error: any) => {
@@ -33,7 +39,7 @@ const Login = () => {
     <PageContainer>
       <FormWrapper>
         <FormTitle>Rezztoran Admin Paneli</FormTitle>
-        <Form name="basic" onFinish={onFinish} autoComplete="off">
+        <Form form={form} name="basic" onFinish={onFinish} autoComplete="off">
           <Form.Item
             name="username"
             rules={[

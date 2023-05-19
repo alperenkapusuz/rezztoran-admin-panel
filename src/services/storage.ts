@@ -1,10 +1,16 @@
+import cookie from "js-cookie";
+
 const clearUserData = () => {
   localStorage.removeItem("@authToken");
   localStorage.removeItem("@userData");
+  cookie.remove("token");
 };
 
 const setAuthData = (token: string) => {
   localStorage.setItem("@authToken", token);
+  cookie.set("token", token, {
+    expires: 1 / 24,
+  });
 };
 
 const getAuthData = () => {
