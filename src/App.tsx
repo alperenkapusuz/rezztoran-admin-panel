@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import NotFound from "@pages/NotFound";
-import Login from "@pages/Auth/Login";
 import StorageService from "@services/storage";
 import { Template, CSpin } from "@components/index";
+import { NotFound, Login, UserAddMode, UserViewMode } from "@pages/index";
 
 const App = () => {
   const [role, setRole] = useState<
@@ -46,7 +45,9 @@ const App = () => {
     return (
       <Routes>
         <Route element={<Template />}>
-          <Route path="/" element={<div>ADMIN</div>} />
+          <Route path="/" element={<div>sa</div>} />
+          <Route path="/kullanici-listesi" element={<UserViewMode />} />
+          <Route path="/kullanici-ekle" element={<UserAddMode />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

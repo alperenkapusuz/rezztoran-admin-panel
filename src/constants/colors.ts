@@ -1,3 +1,7 @@
 export const COLORS = {
-  RezztoranPrimary: "#FF6F37",
+  RezztoranPrimary: "#ff9900",
+  RezztoranSecondary: "#000033",
+  TableHeaderTextColor: "#000033",
+  RezztoranBlack: "#000000",
+  RezztoranWhite: "#FFFFFF",
 };

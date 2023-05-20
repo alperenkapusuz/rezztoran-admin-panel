@@ -20,9 +20,9 @@ const Template = () => {
           colorBgContainer={colorBgContainer}
           setCollapsed={setCollapsed}
         />
-        <Content>
+        <ContentWrapper>
           <Outlet />
-        </Content>
+        </ContentWrapper>
         <FooterWrapper>Rezztoran ©2023</FooterWrapper>
       </Layout>
     </LayoutWrapper>
@@ -45,4 +45,8 @@ const LayoutWrapper = styled(Layout)`
 
 const FooterWrapper = styled(Footer)`
   text-align: center;
+`;
+
+const ContentWrapper = styled(Content)`
+  overflow: auto;
 `;
