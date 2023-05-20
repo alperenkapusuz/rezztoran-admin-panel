@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 type Props = {
-  children: any;
+  children: React.ReactNode;
 };
 
 const CTableHeader = ({ children }: Props) => {

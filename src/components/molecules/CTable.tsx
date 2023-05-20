@@ -31,6 +31,7 @@ const TableWrapper = styled.div`
   height: 85vh;
 `;
 const TableContainer = styled(Table)`
+  min-width: 100px;
   .ant-table-thead .ant-table-cell {
     background-color: ${COLORS.RezztoranPrimary};
     color: ${COLORS.TableHeaderTextColor};

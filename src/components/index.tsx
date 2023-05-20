@@ -1,10 +1,12 @@
 /* ATOMS */
 import CBreadcrumb from "./atoms/CBreadcrumb";
 import CSpin from "./atoms/CSpin";
+import CButton from "./atoms/CButton";
+import CSearch from "./atoms/CSearch";
+import CSelect from "./atoms/CSelect";
 
 /* MOLECULES */
 import CTable from "./molecules/CTable";
-import CSearch from "./molecules/CSearch";
 import CTableHeader from "./molecules/CTableHeader";
 
 /* ORGANISMS */
@@ -17,10 +19,12 @@ import Template from "./template/Template";
 export {
   CHeader,
   CSider,
+  CButton,
   CBreadcrumb,
   Template,
   CSpin,
   CTable,
   CSearch,
   CTableHeader,
+  CSelect,
 };

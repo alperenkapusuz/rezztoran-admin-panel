@@ -17,3 +17,18 @@ export interface IUserPost {
   surname: string;
   role: string;
 }
+
+export interface IUserUpdate {
+  id: string;
+  username: string;
+  mail: string;
+  name: string;
+  surname: string;
+}
+
+export interface IUserUpdateForm {
+  username: string;
+  mail: string;
+  name: string;
+  surname: string;
+}

@@ -14,7 +14,6 @@ const App = () => {
 
   const onLogin = () => {
     const userRole = StorageService.getUserData()?.role;
-    console.log("userRole: ", userRole);
     setRole(userRole);
   };
 
