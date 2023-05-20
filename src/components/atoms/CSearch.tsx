@@ -1,5 +1,4 @@
 import { Input } from "antd";
-import styled from "styled-components";
 
 type Props = {
   placeholder?: string;
