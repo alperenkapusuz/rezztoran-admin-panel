@@ -3,7 +3,7 @@ import { Layout, Menu } from "antd";
 import styled from "styled-components";
 import { COLORS } from "@constants/index";
 import type { MenuProps } from "antd";
-import { UserOutlined } from "@ant-design/icons";
+import { UserOutlined, HomeOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 const { Sider } = Layout;
 
@@ -28,7 +28,7 @@ function getItem(
 }
 
 const items: MenuItem[] = [
-  getItem("Restoran", "sub0", undefined, <UserOutlined />, [
+  getItem("Restoran", "sub0", undefined, <HomeOutlined />, [
     getItem("Restoran Listesi", "0", "/restoran-listesi"),
     getItem("Restoran Ekle", "1", "/restoran-ekle"),
   ]),

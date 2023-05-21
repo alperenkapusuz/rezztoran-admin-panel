@@ -62,10 +62,6 @@ const UserUpdateModal = ({
           <CSearch placeholder="E-mail Giriniz" />
         </Form.Item>
 
-        <Form.Item name="password">
-          <CSearch password placeholder="Ad" />
-        </Form.Item>
-
         <Form.Item name="name">
           <CSearch placeholder="Ad" />
         </Form.Item>

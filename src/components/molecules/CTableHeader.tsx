@@ -16,4 +16,6 @@ const HeaderWrapper = styled.div`
   padding-top: 12px;
   padding-bottom: 12px;
   padding-left: 24px;
+  display: flex;
+  gap: 20px;
 `;
