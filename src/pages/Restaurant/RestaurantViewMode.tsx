@@ -31,6 +31,8 @@ const RestaurantViewMode = () => {
   const [restaurantData, setRestaurantData] = useState<IRestaurantData[]>(
     restaurants === undefined ? [] : restaurants
   );
+  const [selectedRestaurant, setSelectedRestaurant] =
+    useState<IRestaurantData>();
   const [restaurantName, setRestaurantName] = useState<string>("");
   const [city, setCity] = useState<string>("");
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
@@ -83,13 +85,13 @@ const RestaurantViewMode = () => {
       dataIndex: "detail",
       key: "detail",
       fixed: "right",
-      render: () => {
+      render: (_, res) => {
         return (
           <CButton
             radius="50%"
             type="primary"
             icon={<InfoCircleOutlined />}
-            onClick={onOpenDrawer}
+            onClick={() => onOpenDrawer(res.id.toString())}
           />
         );
       },
@@ -99,7 +101,7 @@ const RestaurantViewMode = () => {
       dataIndex: "delete",
       key: "delete",
       fixed: "right",
-      render: (_, user) => {
+      render: (_, res) => {
         return (
           <CButton
             radius="50%"
@@ -107,7 +109,7 @@ const RestaurantViewMode = () => {
             danger
             icon={<DeleteOutlined />}
             onClick={() => {
-              deleteInfo(user.id.toString());
+              deleteInfo(res.id.toString());
             }}
           />
         );
@@ -174,7 +176,11 @@ const RestaurantViewMode = () => {
     setDrawerOpen(false);
   };
 
-  const onOpenDrawer = () => {
+  const onOpenDrawer = (resId: string) => {
+    const selectedRes = restaurants.filter(
+      (res: IRestaurantTable) => res.id.toString() === resId
+    );
+    setSelectedRestaurant(selectedRes?.[0]);
     setDrawerOpen(true);
   };
 
@@ -203,7 +209,11 @@ const RestaurantViewMode = () => {
         />
       </CTableHeader>
       <CTable columns={columns} dataSource={restaurantData} />
-      <RestaurantDetailDrawer open={drawerOpen} onClose={onCloseDrawer} />
+      <RestaurantDetailDrawer
+        open={drawerOpen}
+        onClose={onCloseDrawer}
+        data={selectedRestaurant}
+      />
     </>
   );
 };

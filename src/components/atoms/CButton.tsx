@@ -12,6 +12,7 @@ type Props = {
   htmlType?: "button" | "submit" | "reset";
   radius?: string;
   w?: string;
+  style?: object;
 };
 
 const CButton = ({
@@ -25,6 +26,7 @@ const CButton = ({
   htmlType,
   w,
   radius,
+  style,
 }: Props) => {
   return (
     <Button
@@ -38,6 +40,7 @@ const CButton = ({
       style={{
         width: `${w ? w : null}`,
         borderRadius: `${radius ? radius : "50%"}`,
+        ...style,
       }}
     >
       {children}

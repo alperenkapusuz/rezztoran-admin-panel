@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Layout, Menu } from "antd";
 import styled from "styled-components";
 import { COLORS } from "@constants/index";
 import type { MenuProps } from "antd";
-import { UserOutlined, HomeOutlined } from "@ant-design/icons";
+import { UserOutlined, HomeOutlined, LogoutOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
+import { CButton } from "..";
+import StorageService from "@services/storage";
 const { Sider } = Layout;
 
 type MenuItem = Required<MenuProps>["items"][number];
@@ -54,17 +56,28 @@ const findMenuItemByKey = (key: React.Key): MenuItem | undefined => {
 
 type Props = {
   collapsed: boolean;
+  onLogin: () => void;
 };
 
-const CSider = ({ collapsed }: Props) => {
+const CSider = ({ collapsed, onLogin }: Props) => {
   const navigate = useNavigate();
-
   const handleMenuClick = (key: React.Key) => {
     const clickedItem: any = findMenuItemByKey(key);
     if (clickedItem?.path) {
       navigate(clickedItem?.path);
     }
   };
+
+  const handleLogout = () => {
+    StorageService.clearUserData();
+    onLogin();
+  };
+
+  // useEffect(() => {
+  //   if (logoutFlag) {
+  //     navigate("/login");
+  //   }
+  // }, [logoutFlag]);
 
   return (
     <SiderWrapper trigger={null} collapsible collapsed={collapsed}>
@@ -75,6 +88,22 @@ const CSider = ({ collapsed }: Props) => {
         items={items}
         onClick={({ key }) => handleMenuClick(key)}
       />
+      <CButton
+        type="ghost"
+        radius="10px"
+        onClick={handleLogout}
+        style={{
+          color: COLORS.RezztoranWhite,
+          display: "flex",
+          alignItems: "center",
+          gap: "10px",
+          position: "absolute",
+          bottom: 40,
+          left: 35,
+        }}
+      >
+        <LogoutOutlined /> Çıkış Yap
+      </CButton>
     </SiderWrapper>
   );
 };

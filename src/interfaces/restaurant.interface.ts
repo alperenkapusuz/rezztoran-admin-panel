@@ -8,6 +8,7 @@ export interface IRestaurantData {
   restaurantName: string;
   restaurantImage: string;
   city: string;
+  phone: string;
   district: string;
   detailedAddress: string;
   latitude: string;

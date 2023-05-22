@@ -49,7 +49,7 @@ const App = () => {
   const RouterAdmin = () => {
     return (
       <Routes>
-        <Route element={<Template />}>
+        <Route element={<Template onLogin={onLogin} />}>
           <Route path="/restoran-listesi" element={<RestaurantViewMode />} />
           <Route path="/kullanici-listesi" element={<UserViewMode />} />
           <Route path="/kullanici-ekle" element={<UserAddMode />} />
@@ -62,7 +62,7 @@ const App = () => {
   const RouterRestaurantAdmin = () => {
     return (
       <Routes>
-        <Route element={<Template />}>
+        <Route element={<Template onLogin={onLogin} />}>
           <Route path="/restoran-listesi" element={<RestaurantViewMode />} />
           <Route path="/kullanici-listesi" element={<UserViewMode />} />
           <Route path="/kullanici-ekle" element={<UserAddMode />} />

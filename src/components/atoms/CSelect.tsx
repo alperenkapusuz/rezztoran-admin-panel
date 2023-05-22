@@ -2,7 +2,7 @@ import { ISelectOptions } from "@interfaces/select.interface";
 import { Select } from "antd";
 
 type Props = {
-  clear: boolean;
+  clear?: boolean;
   defaultValue?: string;
   onChange?: (e: string) => void;
   options: ISelectOptions[];

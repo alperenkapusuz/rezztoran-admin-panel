@@ -5,7 +5,11 @@ import styled from "styled-components";
 import { Outlet } from "react-router-dom";
 const { Content, Footer } = Layout;
 
-const Template = () => {
+type Props = {
+  onLogin: () => void;
+};
+
+const Template = ({ onLogin }: Props) => {
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer },
@@ -13,7 +17,7 @@ const Template = () => {
 
   return (
     <LayoutWrapper>
-      <CSider collapsed={collapsed} />
+      <CSider collapsed={collapsed} onLogin={onLogin} />
       <Layout>
         <CHeader
           collapsed={collapsed}
