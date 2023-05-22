@@ -1,3 +1,4 @@
+import React from "react";
 import { IRestaurantData } from "@interfaces/restaurant.interface";
 import { Drawer, Row, Col, Divider, Image } from "antd";
 import styled from "styled-components";

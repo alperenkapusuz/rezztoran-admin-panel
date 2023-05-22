@@ -3,6 +3,7 @@ import { Layout, theme } from "antd";
 import { CHeader, CSider } from "@components/index";
 import styled from "styled-components";
 import { Outlet } from "react-router-dom";
+import React from "react";
 const { Content, Footer } = Layout;
 
 type Props = {

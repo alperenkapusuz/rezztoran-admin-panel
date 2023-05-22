@@ -2,6 +2,7 @@ import { Table } from "antd";
 import styled from "styled-components";
 import type { ColumnsType } from "antd/es/table";
 import { COLORS } from "@constants/colors";
+import React from "react";
 
 type Props = {
   columns: ColumnsType<any>;

@@ -1,5 +1,6 @@
 import { ISelectOptions } from "@interfaces/select.interface";
 import { Select } from "antd";
+import React from "react";
 
 type Props = {
   clear?: boolean;

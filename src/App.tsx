@@ -9,6 +9,7 @@ import {
   UserViewMode,
   RestaurantViewMode,
 } from "@pages/index";
+import React from "react";
 
 const App = () => {
   const [role, setRole] = useState<
