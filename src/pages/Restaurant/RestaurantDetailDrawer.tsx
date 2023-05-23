@@ -17,10 +17,23 @@ interface DescriptionItemProps {
 }
 
 const DescriptionItem = ({ title, content }: DescriptionItemProps) => (
-  <DescriptionItemDiv>
-    <DescriptionItemP>{title}:</DescriptionItemP>
+  <div
+    style={{
+      color: "rgba(0, 0, 0, 0.65)",
+      fontSize: "14px",
+    }}
+  >
+    <p
+      style={{
+        display: "inline-block",
+        marginRight: "8px",
+        color: "rgba(0, 0, 0, 0.85)",
+      }}
+    >
+      {title}:
+    </p>
     {content}
-  </DescriptionItemDiv>
+  </div>
 );
 
 const RestaurantDetailDrawer = ({ open, onClose, data }: Props) => {
@@ -32,112 +45,110 @@ const RestaurantDetailDrawer = ({ open, onClose, data }: Props) => {
     detailedAddress,
     starCount,
     restaurantAttributes,
-    // bookingAvailable,
+    bookingAvailable,
     openingTime,
     closingTime,
-    // intervalMinutes,
-    // busyDates,
+    intervalMinutes,
+    busyDates,
   } = data ?? {};
 
-  console.log(data);
+  console.log(
+    "a: ",
+    bookingAvailable,
+    " b: ",
+    intervalMinutes,
+    " c:",
+    busyDates
+  );
 
   return (
     <Drawer width={640} onClose={onClose} open={open}>
-      <Row>
-        <Col>
-          <ImageWrapper
-            width={300}
-            height={300}
-            src={restaurantImage}
-            preview={false}
-          />
-        </Col>
-        <ColWrapper>
-          <RowTitle>{restaurantName}</RowTitle>
-          <RowSubtitle>{city}</RowSubtitle>
-          <RowSubtitle>{phone}</RowSubtitle>
-          <ColStarCount>
-            <StarOutlined /> {starCount}
-          </ColStarCount>
-          <ClockWrapper>
-            <ClockSpan>{openingTime}</ClockSpan>
-            <ClockSpan>{closingTime}</ClockSpan>
-          </ClockWrapper>
-        </ColWrapper>
-      </Row>
+      <Image width={300} height={300} src={restaurantImage} preview={false} />
+      <DescriptionItem title="Ad" content={restaurantName} />
+      <DescriptionItem title="Şehir" content={city} />
+      <DescriptionItem title="Telefon" content={phone} />
+      <DescriptionItem title="Yıldız" content={starCount} />
+      <DescriptionItem title="Açılış saati" content={openingTime} />
+      <DescriptionItem title="Kapanış saati" content={closingTime} />
       <Divider />
-      <Row>
-        <DescriptionItem title="Adres" content={detailedAddress} />
-        <UlList>
+      <DescriptionItem title="Adres" content={detailedAddress} />
+      <ul>
+        {restaurantAttributes && (
           <DescriptionItemDiv>Seçenekler</DescriptionItemDiv>
-          {restaurantAttributes &&
-            Object.entries(restaurantAttributes).map(([item, availability]) => {
-              if (availability === "Var") {
-                return (
-                  <div key={item}>
-                    <li>{item}</li>
-                  </div>
-                );
-              } else {
-                return null;
-              }
-            })}
-        </UlList>
-      </Row>
+        )}
+        {restaurantAttributes &&
+          Object.entries(restaurantAttributes).map(([item, availability]) => {
+            if (availability === "Var") {
+              return <li key={item}>{item}</li>;
+            }
+          })}
+      </ul>
+      <Divider />
+      <DescriptionItem
+        title="Rezervasyon durumu"
+        content={bookingAvailable && "Yapılabilir"}
+      />
+      <DescriptionItem title="Kapanış saati" content={closingTime} />
+      <DescriptionItem
+        title="Meşgul saatler"
+        content={busyDates?.map((x) => (
+          <p>{x}</p>
+        ))}
+      />
     </Drawer>
   );
 };
 
 export default RestaurantDetailDrawer;
 
-const ColWrapper = styled(Col)`
-  width: 49%;
-  padding: 20px;
-`;
+// const ColWrapper = styled(Col)`
+//   width: 49%;
+//   padding: 20px;
+// `;
 
-const ImageWrapper = styled(Image)`
-  border-radius: 10px;
-`;
+// const ImageWrapper = styled(Image)`
+//   border-radius: 10px;
+// `;
 
-const RowTitle = styled(Row)`
-  max-width: 250px;
-  font-size: 30px;
-  font-family: "Poppins" sans-serif;
-  line-height: 50px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-`;
+// const RowTitle = styled(Row)`
+//   max-width: 250px;
+//   font-size: 30px;
+//   font-family: "Poppins" sans-serif;
+//   line-height: 50px;
+//   overflow: hidden;
+//   white-space: nowrap;
+//   text-overflow: ellipsis;
+// `;
 
-const RowSubtitle = styled(Row)`
-  font-size: 16px;
-  line-height: 40px;
-`;
+// const RowSubtitle = styled(Row)`
+//   font-size: 16px;
+//   line-height: 40px;
+// `;
 
-const ColStarCount = styled(Col)`
-  font-size: 20px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-`;
+// const ColStarCount = styled(Col)`
+//   font-size: 20px;
+//   margin-top: 10px;
+//   margin-bottom: 10px;
+// `;
 
-const ClockWrapper = styled(Row)`
-  border: 2px solid ${COLORS.RezztoranPrimary};
-  display: flex;
-  justify-content: space-evenly;
-  margin-top: 15px;
-  padding: 10px;
-  border-radius: 10px;
-  width: 200px;
-`;
+// const ClockWrapper = styled(Row)`
+//   border: 2px solid ${COLORS.RezztoranPrimary};
+//   display: flex;
+//   justify-content: space-evenly;
+//   margin-top: 15px;
+//   padding: 10px;
+//   border-radius: 10px;
+//   width: 200px;
+// `;
 
-const ClockSpan = styled.span`
-  font-size: 18px;
-  color: ${COLORS.RezztoranPrimary};
-`;
+// const ClockSpan = styled.span`
+//   font-size: 18px;
+//   color: ${COLORS.RezztoranPrimary};
+// `;
 
-const UlList = styled.ul`
-  list-style-type: circle;
-`;
+// const UlList = styled.ul`
+//   list-style-type: circle;
+// `;
 
 const DescriptionItemDiv = styled.div`
   margin-bottom: 7px;
