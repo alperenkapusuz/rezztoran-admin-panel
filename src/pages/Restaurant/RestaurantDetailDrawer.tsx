@@ -70,25 +70,26 @@ const RestaurantDetailDrawer = ({ open, onClose, data }: Props) => {
       <DescriptionItem title="Yıldız" content={starCount} />
       <DescriptionItem title="Açılış saati" content={openingTime} />
       <DescriptionItem title="Kapanış saati" content={closingTime} />
-      <Divider />
       <DescriptionItem title="Adres" content={detailedAddress} />
-      <ul>
-        {restaurantAttributes && (
-          <DescriptionItemDiv>Seçenekler</DescriptionItemDiv>
-        )}
-        {restaurantAttributes &&
-          Object.entries(restaurantAttributes).map(([item, availability]) => {
-            if (availability === "Var") {
-              return <li key={item}>{item}</li>;
-            }
-          })}
-      </ul>
+      <Divider />
+      {restaurantAttributes && (
+        <DescriptionItemDiv>Seçenekler: </DescriptionItemDiv>
+      )}
+      {restaurantAttributes &&
+        Object.entries(restaurantAttributes).map(([item, availability]) => {
+          if (availability === "Var") {
+            return <p key={item}>{item}</p>;
+          }
+        })}
       <Divider />
       <DescriptionItem
         title="Rezervasyon durumu"
         content={bookingAvailable && "Yapılabilir"}
       />
+      <Divider />
+      <DescriptionItem title="Açılış saati" content={openingTime} />
       <DescriptionItem title="Kapanış saati" content={closingTime} />
+      <Divider />
       <DescriptionItem
         title="Meşgul saatler"
         content={busyDates?.map((x) => (
