@@ -41,3 +41,17 @@ const deleteRestaurant = async (id: string) => {
 export const useDeleteRestaurant = () => {
   return useMutation(deleteRestaurant);
 };
+
+export const useSearchRestaurants = (params: any) => {
+  console.log("PARAMS: ", params);
+  return useQuery(["restaurants", params.toString()], async () => {
+    const response = await service.get(
+      `${END_POINTS.REZZTORAN_RESTAURANT_SERVICE.RESTAURANT_SEARCH}`,
+      { params }
+    );
+    if (response.status !== 200) {
+      throw new Error("An error occurred while fetching the data");
+    }
+    return response.data;
+  });
+};

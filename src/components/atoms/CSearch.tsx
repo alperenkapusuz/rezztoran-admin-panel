@@ -12,6 +12,7 @@ type Props = {
   disabled?: boolean;
   password?: boolean;
   w?: string;
+  type?: string;
 };
 
 const CSearch = ({

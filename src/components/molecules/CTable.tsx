@@ -7,7 +7,7 @@ import React from "react";
 type Props = {
   columns: ColumnsType<any>;
   dataSource: any[];
-  pagination?: object | false;
+  pagination?: any;
   size?: "large" | "middle" | "small";
 };
 

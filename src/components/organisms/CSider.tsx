@@ -31,7 +31,7 @@ function getItem(
 
 const items: MenuItem[] = [
   getItem("Restoran", "sub0", undefined, <HomeOutlined />, [
-    getItem("Restoran Listesi", "0", "/restoran-listesi"),
+    getItem("Restoran Listesi", "0", "/restaurant"),
     getItem("Restoran Ekle", "1", "/restoran-ekle"),
   ]),
 

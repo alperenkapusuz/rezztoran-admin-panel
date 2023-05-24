@@ -6,7 +6,7 @@ type Props = {
   clear?: boolean;
   defaultValue?: string;
   onChange?: (e: string) => void;
-  options: ISelectOptions[];
+  options?: ISelectOptions[];
   size?: "large" | "middle" | "small";
   disabled?: boolean;
   value?: string;
