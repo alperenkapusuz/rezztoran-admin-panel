@@ -71,6 +71,7 @@ const CSider = ({ collapsed, onLogin }: Props) => {
   const handleLogout = () => {
     StorageService.clearUserData();
     onLogin();
+    navigate("/");
   };
 
   // useEffect(() => {

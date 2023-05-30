@@ -41,8 +41,8 @@ const RestaurantSearch = ({
         value={sortDirection}
         onChange={(value) => setParamField("sortDirection", value)}
         options={[
-          { value: "DESC", label: "Descending" },
-          { value: "ASC", label: "Ascending" },
+          { value: "DESC", label: "Azalan" },
+          { value: "ASC", label: "Artan" },
         ]}
       />
       <CSelect
