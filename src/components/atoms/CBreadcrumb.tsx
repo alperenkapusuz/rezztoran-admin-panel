@@ -10,8 +10,7 @@ const BreadCrumb = () => {
     const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
     const breadcrumbItems = [
       {
-        href: "/",
-        title: "Ana Sayfa",
+        href: "/restaurant",
       },
     ];
     pathnames.forEach((name, index) => {

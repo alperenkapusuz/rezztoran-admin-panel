@@ -32,7 +32,6 @@ function getItem(
 const items: MenuItem[] = [
   getItem("Restoran", "sub0", undefined, <HomeOutlined />, [
     getItem("Restoran Listesi", "0", "/restaurant"),
-    getItem("Restoran Ekle", "1", "/restoran-ekle"),
   ]),
 
   getItem("Kullanıcı", "sub1", undefined, <UserOutlined />, [
@@ -73,12 +72,6 @@ const CSider = ({ collapsed, onLogin }: Props) => {
     onLogin();
     navigate("/");
   };
-
-  // useEffect(() => {
-  //   if (logoutFlag) {
-  //     navigate("/login");
-  //   }
-  // }, [logoutFlag]);
 
   return (
     <SiderWrapper trigger={null} collapsible collapsed={collapsed}>
