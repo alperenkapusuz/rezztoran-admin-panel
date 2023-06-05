@@ -43,7 +43,6 @@ export const useDeleteRestaurant = () => {
 };
 
 export const useSearchRestaurants = (params: any) => {
-  console.log("PARAMS: ", params);
   return useQuery(["restaurants", params.toString()], async () => {
     const response = await service.get(
       `${END_POINTS.REZZTORAN_RESTAURANT_SERVICE.RESTAURANT_SEARCH}`,

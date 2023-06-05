@@ -1,5 +1,5 @@
 import React from "react";
-import { CSpin, CTable, CTableHeader } from "@components/index";
+import { CSpin, CTable, CTableHeader, LeafletMap } from "@components/index";
 import RestaurantDetailDrawer from "./RestaurantDetailDrawer";
 import RestaurantSearch from "./RestaurantSearch";
 import { useSearchPage } from "./useSearch";

@@ -2,6 +2,7 @@ import React from "react";
 import { IRestaurantData } from "@interfaces/restaurant.interface";
 import { Drawer, Divider, Image } from "antd";
 import styled from "styled-components";
+import { LeafletMap } from "@components/index";
 
 type Props = {
   open: boolean;
@@ -46,9 +47,14 @@ const RestaurantDetailDrawer = ({ open, onClose, data }: Props) => {
     bookingAvailable,
     openingTime,
     closingTime,
+    longitude,
+    latitude,
     // intervalMinutes,
     busyDates,
   } = data ?? {};
+
+  const parsedLongitude = longitude ? parseFloat(longitude) : undefined;
+  const parsedLatitude = latitude ? parseFloat(latitude) : undefined;
 
   return (
     <Drawer width={640} onClose={onClose} open={open}>
@@ -70,6 +76,8 @@ const RestaurantDetailDrawer = ({ open, onClose, data }: Props) => {
             return <p key={item}>{item}</p>;
           }
         })}
+      <Divider />
+      <LeafletMap longitude={parsedLongitude} latitude={parsedLatitude} />
       <Divider />
       <DescriptionItem
         title="Rezervasyon durumu"

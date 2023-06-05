@@ -12,6 +12,7 @@ import CTableHeader from "./molecules/CTableHeader";
 /* ORGANISMS */
 import CHeader from "./organisms/CHeader";
 import CSider from "./organisms/CSider";
+import LeafletMap from "./organisms/LeafletMap";
 
 /* TEMPLATE */
 import Template from "./template/Template";
@@ -27,4 +28,5 @@ export {
   CSearch,
   CTableHeader,
   CSelect,
+  LeafletMap,
 };
